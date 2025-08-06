@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="5;url=https://www.facebook.com/61578841869167/videos/753601437316728">
     <title>JULY: The People's Verdict</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap&subset=cyrillic" rel="stylesheet">
+    <meta http-equiv="refresh" content="0;url=https://www.facebook.com/61578841869167/videos/753601437316728">
     <style>
         * {
             margin: 0;
@@ -14,10 +13,9 @@
         }
         
         body {
-            background: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925') no-repeat center center fixed;
-            background-size: cover;
-            color: #ffffff;
-            font-family: 'Bebas Neue', sans-serif;
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -25,58 +23,98 @@
             justify-content: center;
             text-align: center;
             padding: 20px;
-            overflow-x: hidden;
             position: relative;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            overflow: hidden;
         }
         
-        /* Dark overlay for better readability */
-        body::before {
-            content: '';
+        .background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            z-index: 1;
+            background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+            z-index: -1;
         }
         
-        /* Decorative elements */
-        .film-strip {
+        .film-overlay {
             position: absolute;
             width: 100%;
-            height: 40px;
-            background-image: repeating-linear-gradient(
-                to right,
-                #000000,
-                #000000 20px,
-                #a71212 20px,
-                #a71212 22px
-            );
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px, transparent 1px, transparent 3px),
+                repeating-linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px, transparent 1px, transparent 3px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(10, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(167, 18, 18, 0.5);
+            border: 1px solid rgba(167, 18, 18, 0.3);
+            position: relative;
             z-index: 10;
         }
         
-        .top-strip {
-            top: 0;
+        h1 {
+            font-size: 3.5rem;
+            color: #a71212;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
+            letter-spacing: 2px;
+            font-weight: 700;
         }
         
-        .bottom-strip {
-            bottom: 0;
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ffde59;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        
+        .redirect-message {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .redirect-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            background: #a71212;
+            color: #ffde59;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid #ffde59;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
+        }
+        
+        .redirect-button:hover {
+            background: #ffde59;
+            color: #a71212;
+            transform: scale(1.05);
         }
         
         .film-reel {
             position: absolute;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             border: 4px solid #ffde59;
-            background: #000000;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 5;
+            animation: reel-spin 20s linear infinite;
         }
         
         .reel-left {
@@ -87,233 +125,88 @@
         .reel-right {
             bottom: 30px;
             right: 30px;
+            animation-direction: reverse;
         }
         
         .reel-inner {
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             border-radius: 50%;
             background: #a71212;
         }
         
-        /* Content styling */
-        .container {
-            max-width: 800px;
-            z-index: 20;
-            padding: 40px 20px;
-            position: relative;
+        .department {
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
-        .movie-title {
-            margin-bottom: 40px;
-        }
-        
-        .main-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 8rem;
-            color: #a71212;
-            letter-spacing: 8px;
-            line-height: 0.9;
-            margin-bottom: 10px;
-            text-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
-            animation: pulse 2s infinite;
-        }
-        
-        .sub-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: #ffffff;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-        }
-        
-        .redirect-message {
-            font-size: 2.5rem;
-            color: #ffde59;
-            margin: 30px 0;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            border: 2px solid #a71212;
-            max-width: 600px;
-            margin: 30px auto;
-            text-shadow: 0 0 10px rgba(255, 222, 89, 0.6);
-        }
-        
-        .countdown {
-            display: inline-block;
-            font-size: 2.5rem;
-            color: #ffffff;
-            background: rgba(167, 18, 18, 0.8);
-            width: 60px;
-            height: 60px;
-            line-height: 60px;
-            border-radius: 50%;
-            margin: 0 5px;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-        }
-        
-        .manual-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: #a71212;
-            color: #ffde59;
-            font-size: 1.5rem;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid #ffde59;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            box-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
-        }
-        
-        .manual-link:hover {
-            background: #ffde59;
-            color: #a71212;
-            transform: scale(1.05);
-        }
-        
-        /* Department info */
-        .department-info {
-            margin-top: 50px;
-            font-size: 1.4rem;
-            line-height: 1.8;
-            color: #ffffff;
-            letter-spacing: 1px;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
-        }
-        
-        /* Animations */
         @keyframes reel-spin {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .reel-left {
-            animation: reel-spin 20s linear infinite;
-        }
-        
-        .reel-right {
-            animation: reel-spin 25s linear infinite reverse;
-        }
-        
-        /* Progress bar */
-        .progress-container {
-            width: 80%;
-            max-width: 500px;
-            height: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            margin: 30px auto;
-            overflow: hidden;
-            border: 1px solid #ffde59;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            width: 0;
-            background: linear-gradient(90deg, #a71212, #ffde59);
-            transition: width 0.5s ease;
-            border-radius: 10px;
-        }
-        
-        /* Responsive design */
         @media (max-width: 768px) {
-            .main-title {
-                font-size: 5rem;
+            h1 {
+                font-size: 2.5rem;
             }
             
-            .sub-title {
-                font-size: 2rem;
+            .subtitle {
+                font-size: 1.5rem;
             }
             
             .redirect-message {
-                font-size: 1.8rem;
-                padding: 15px;
-            }
-            
-            .countdown {
-                font-size: 2rem;
-                width: 50px;
-                height: 50px;
-                line-height: 50px;
-            }
-            
-            .manual-link {
                 font-size: 1.2rem;
-                padding: 12px 25px;
             }
             
-            .department-info {
-                font-size: 1.2rem;
+            .redirect-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .film-reel {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .reel-inner {
+                width: 20px;
+                height: 20px;
             }
         }
         
         @media (max-width: 480px) {
-            .main-title {
-                font-size: 3.5rem;
-                letter-spacing: 4px;
+            h1 {
+                font-size: 2rem;
             }
             
-            .sub-title {
-                font-size: 1.6rem;
+            .subtitle {
+                font-size: 1.2rem;
             }
             
             .redirect-message {
-                font-size: 1.5rem;
-                padding: 10px;
-            }
-            
-            .countdown {
-                font-size: 1.5rem;
-                width: 40px;
-                height: 40px;
-                line-height: 40px;
+                font-size: 1rem;
             }
             
             .film-reel {
-                width: 45px;
-                height: 45px;
+                width: 40px;
+                height: 40px;
             }
             
             .reel-inner {
                 width: 15px;
                 height: 15px;
             }
-            
-            .reel-left {
-                top: 15px;
-                left: 15px;
-            }
-            
-            .reel-right {
-                bottom: 15px;
-                right: 15px;
-            }
-            
-            .manual-link {
-                font-size: 1.1rem;
-                padding: 10px 20px;
-            }
-            
-            .department-info {
-                font-size: 1.1rem;
-            }
         }
     </style>
+    <script>
+        // Immediate redirect using JavaScript
+        window.location.href = "https://www.facebook.com/61578841869167/videos/753601437316728";
+    </script>
 </head>
 <body>
-    <div class="film-strip top-strip"></div>
-    <div class="film-strip bottom-strip"></div>
+    <div class="background"></div>
+    <div class="film-overlay"></div>
     
     <div class="film-reel reel-left">
         <div class="reel-inner"></div>
@@ -324,56 +217,23 @@
     </div>
     
     <div class="container">
-        <div class="movie-title">
-            <h1 class="main-title">JULY</h1>
-            <h2 class="sub-title">The People's Verdict</h2>
-        </div>
+        <h1>JULY</h1>
+        <div class="subtitle">The People's Verdict</div>
         
-        <div class="redirect-message">
-            Redirecting to the official video in <span class="countdown">5</span> seconds...
-        </div>
+        <noscript>
+            <div class="redirect-message">
+                JavaScript is disabled in your browser.<br>
+                Please click the button below to watch the film:
+            </div>
+            <a href="https://www.facebook.com/61578841869167/videos/753601437316728" class="redirect-button">
+                Watch the Film
+            </a>
+        </noscript>
         
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        
-        <a href="https://www.facebook.com/61578841869167/videos/753601437316728" class="manual-link">
-            Click here if not redirected automatically
-        </a>
-        
-        <div class="department-info">
-            <p>Department of Accounting & Information Systems</p>
-            <p>University of Barishal</p>
+        <div class="department">
+            Department of Accounting & Information Systems<br>
+            University of Barishal
         </div>
     </div>
-
-    <script>
-        // Set the countdown from 5 to 0
-        let count = 5;
-        const countdownElement = document.querySelector('.countdown');
-        const progressBar = document.getElementById('progressBar');
-        
-        function updateCountdown() {
-            countdownElement.textContent = count;
-            progressBar.style.width = ((5 - count) * 20) + '%';
-            
-            if (count <= 0) {
-                // Redirect when countdown reaches 0
-                window.location.href = "https://www.facebook.com/61578841869167/videos/753601437316728";
-            } else {
-                count--;
-                setTimeout(updateCountdown, 1000);
-            }
-        }
-        
-        // Start the countdown
-        updateCountdown();
-        
-        // Redirect manually if the user clicks the link
-        document.querySelector('.manual-link').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.location.href = this.href;
-        });
-    </script>
 </body>
 </html>
