@@ -3,19 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redirecting to JULY: The People's Verdict</title>
+    <title>JULY: The People's Verdict</title>
     <meta http-equiv="refresh" content="0;url=https://www.facebook.com/61578841869167/videos/753601437316728">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #1a0000 0%, #000 70%);
+            z-index: -1;
+        }
+        
+        .film-overlay {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px, transparent 1px, transparent 3px),
+                repeating-linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px, transparent 1px, transparent 3px);
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        .container {
+            max-width: 600px;
+            padding: 30px;
+            background: rgba(10, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(167, 18, 18, 0.5);
+            border: 1px solid rgba(167, 18, 18, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            color: #a71212;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.8rem;
+            color: #ffde59;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+        
+        .redirect-message {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .redirect-button {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            background: #a71212;
+            color: #ffde59;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid #ffde59;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 0 15px rgba(167, 18, 18, 0.8);
+        }
+        
+        .redirect-button:hover {
+            background: #ffde59;
+            color: #a71212;
+            transform: scale(1.05);
+        }
+        
+        .film-reel {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid #ffde59;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            animation: reel-spin 20s linear infinite;
+        }
+        
+        .reel-left {
+            top: 30px;
+            left: 30px;
+        }
+        
+        .reel-right {
+            bottom: 30px;
+            right: 30px;
+            animation-direction: reverse;
+        }
+        
+        .reel-inner {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #a71212;
+        }
+        
+        .department {
+            margin-top: 40px;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @keyframes reel-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .redirect-message {
+                font-size: 1.2rem;
+            }
+            
+            .redirect-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .film-reel {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .reel-inner {
+                width: 20px;
+                height: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .redirect-message {
+                font-size: 1rem;
+            }
+            
+            .film-reel {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .reel-inner {
+                width: 15px;
+                height: 15px;
+            }
+        }
+    </style>
     <script>
         // Immediate redirect using JavaScript
         window.location.href = "https://www.facebook.com/61578841869167/videos/753601437316728";
     </script>
 </head>
 <body>
-    <!-- Fallback message in case redirects don't work -->
-    <noscript>
-        <h1>JULY: The People's Verdict</h1>
-        <p>Your browser does not support JavaScript. Please click the link below:</p>
-        <a href="https://www.facebook.com/61578841869167/videos/753601437316728">Watch the video on Facebook</a>
-    </noscript>
+    <div class="background"></div>
+    <div class="film-overlay"></div>
+    
+    <div class="film-reel reel-left">
+        <div class="reel-inner"></div>
+    </div>
+    
+    <div class="film-reel reel-right">
+        <div class="reel-inner"></div>
+    </div>
+    
+    <div class="container">
+        <h1>JULY</h1>
+        <div class="subtitle">The People's Verdict</div>
+        
+        <noscript>
+            <div class="redirect-message">
+                JavaScript is disabled in your browser.<br>
+                Please click the button below to watch the film:
+            </div>
+            <a href="https://www.facebook.com/61578841869167/videos/753601437316728" class="redirect-button">
+                Watch the Film
+            </a>
+        </noscript>
+        
+        <div class="department">
+            Department of Accounting & Information Systems<br>
+            University of Barishal
+        </div>
+    </div>
 </body>
 </html>
